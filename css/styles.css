@@ -27,6 +27,7 @@ header {
 	margin: auto;
 	width: 80%;
 	margin-top: 2em;
+
 	padding-bottom: 10%;
 }
 
@@ -79,6 +80,7 @@ input[type=search] {
 	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 	padding-left: 5px;
+
 }
 .notifications {
 	width: 40%;
@@ -122,6 +124,7 @@ input[type=search] {
 	float: right;
 	padding: 1%;
 }
+
 .MySplitter {
 	background: white;
 }
@@ -189,6 +192,7 @@ body {
 	filter: alpha(opacity=50); /* IE */
 }
 /*
+
  body {
  background-color: grey;
  }
@@ -213,6 +217,7 @@ body {
  background-color: green;
  }
  }
+
 
  */
 .nav, nav {

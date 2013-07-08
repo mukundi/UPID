@@ -10,7 +10,9 @@
 		
 		
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
+
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/Merged-JS.js"></script>
+
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.ui.all.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.layout.js"></script>
 	<script type="text/javascript">
