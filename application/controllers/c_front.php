@@ -16,6 +16,16 @@ class C_Front extends CI_Controller {
 		$this -> load -> view('template', $data);
 	}//End of index file
 
-
+public function crime() {
+		$data['contentView']="index";
+		$data['title']="Home";
+		$this -> load -> view('template', $data);
+	}//End of index file
+	
+	public function incidents() {
+		$data['contentView']="index";
+		$data['title']="Home";
+		$this -> load -> view('template', $data);
+	}//End of index file
 	
 }?>
