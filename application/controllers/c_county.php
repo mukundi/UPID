@@ -11,7 +11,7 @@ class C_County extends CI_Controller {
 
 	public function index() {
 		$this -> load -> model('m_security');
-		$temp_county = $this -> m_security -> getCountyNames();
+		$temp_county = $this -> m_security -> getConstituenciesNames();
 	}
 }
 ?>

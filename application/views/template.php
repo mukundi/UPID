@@ -9,13 +9,13 @@
 			<img src='<?php echo base_url()?>images/uPID_logo.png' />
 			<div class="nav">
 				<ul>
-					<li>
-						<a>POVERTY</a>
+					<li id="poverty">
+						<a >POVERTY</a>
 					</li>
-					<li>
+					<li id="crime">
 						<a>CRIME</a>
 					</li>
-					<li>
+					<li id="incidents">
 						<a>INCIDENTS</a>
 					</li>
 				</ul>
