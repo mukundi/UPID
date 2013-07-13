@@ -296,7 +296,11 @@ a {
 	width:63.8%;
 }
 
-.map{
-	width:100%
+#mapbox { 
 	
-}
+	position:absolute; 
+	margin-top: 0.5em;
+	width:29%; 
+	height:34%
+	
+	}

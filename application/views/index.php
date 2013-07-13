@@ -15,10 +15,7 @@
 
 	</div>
 </div-->
-<style>
-    
-    #map { position:absolute; width:29%; height:32%}
-  </style>
+
   
 <div class="tile-half">
 	<div class="tile large">
@@ -48,7 +45,7 @@
 			<h4>chart</h4>
 			<h4>list</h4>
 		</div>
-		<div id="map">
+		<div id="mapbox">
 			
 		</div>
 	</div>
@@ -63,7 +60,7 @@
 
 <script>
         $(document).ready(function() {
-            var map = L.mapbox.map('map', 'examples.map-4l7djmvo')
+            var map = L.mapbox.map('mapbox', 'examples.map-4l7djmvo')
     .setView([1.283, 36.817], 6);
 
         });             
