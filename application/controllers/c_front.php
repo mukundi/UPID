@@ -4,10 +4,8 @@ class C_Front extends CI_Controller {
 	var $data;
 
 	public function __construct() {
-
 		parent::__construct();
 		$this -> data = array();
-
 	}
 
 	public function index() {
