@@ -7,6 +7,13 @@ body {
 	font-family: "Helvetica";
 	background: #2f2f2f;
 }
+h3{
+	font-size:1.2em;
+	margin:0;
+	padding-top:0.5em;
+	padding-left:0.5em;
+	font-weight:normal;
+}
 header, .content {
 	border-radius: 2px;
 }
@@ -27,7 +34,6 @@ header {
 	margin: auto;
 	width: 95%;
 	margin-top: 2em;
-
 	padding-bottom: 10%;
 }
 
