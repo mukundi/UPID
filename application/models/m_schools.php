@@ -29,12 +29,9 @@ class M_Schools extends MY_Model {
 		print_r($_POST);
 		echo '</pre>';
 				//insert facility if new, else update the existing one
-			   $this -> theForm = new \models\Entities\E_Deliveries_No_Log; //create an object of the model
-		      
-			 	
-				//$this -> theForm -> setCreatedAt(new DateTime()); 
-				
-		$theForm -> setSchoolName($_POST['school_name']);
+		
+		$this -> theForm = new \models\Entities\E_Schools; //create an object of the model
+		$this -> theForm -> setSecurityIncidentDOR($_POST['dor']);
 	}
 
 

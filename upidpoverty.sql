@@ -1,0 +1,283 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.2.2
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 13, 2013 at 07:15 PM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `upid`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `constituencies`
+--
+
+CREATE TABLE IF NOT EXISTS `constituencies` (
+  `constituency_id` int(11) NOT NULL AUTO_INCREMENT,
+  `constituency_name` varchar(1000) NOT NULL,
+  `constituency_population` int(11) NOT NULL,
+  PRIMARY KEY (`constituency_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `constituencies`
+--
+
+INSERT INTO `constituencies` (`constituency_id`, `constituency_name`, `constituency_population`) VALUES
+(1, 'hurlingham', 0),
+(2, 'westlands', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `counties`
+--
+
+CREATE TABLE IF NOT EXISTS `counties` (
+  `county_id` int(11) NOT NULL AUTO_INCREMENT,
+  `county_name` varchar(1000) NOT NULL,
+  PRIMARY KEY (`county_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `counties`
+--
+
+INSERT INTO `counties` (`county_id`, `county_name`) VALUES
+(1, 'kiambu'),
+(2, 'nairobi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dim_security_incidences`
+--
+
+CREATE TABLE IF NOT EXISTS `dim_security_incidences` (
+  `securityIncidenceID` int(11) NOT NULL AUTO_INCREMENT,
+  `incidenceType` varchar(45) NOT NULL,
+  `dateOfReporting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `reporterEmail` varchar(45) DEFAULT NULL,
+  `incidenceDescription` text NOT NULL,
+  PRIMARY KEY (`securityIncidenceID`),
+  KEY `fk_dim_security_incidence_dim_security_incidence_type` (`incidenceType`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dim_security_incidence_type`
+--
+
+CREATE TABLE IF NOT EXISTS `dim_security_incidence_type` (
+  `incidenceTypeID` int(11) NOT NULL AUTO_INCREMENT,
+  `incidenceName` varchar(45) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `createdBy` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`incidenceTypeID`),
+  UNIQUE KEY `incidenceName_UNIQUE` (`incidenceName`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dim_time`
+--
+
+CREATE TABLE IF NOT EXISTS `dim_time` (
+  `timeID` int(11) NOT NULL AUTO_INCREMENT,
+  `day` int(11) DEFAULT NULL,
+  `week` int(11) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL,
+  `year` int(11) DEFAULT NULL,
+  PRIMARY KEY (`timeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fact_security_summary`
+--
+
+CREATE TABLE IF NOT EXISTS `fact_security_summary` (
+  `factSecuritySummaryID` int(11) NOT NULL AUTO_INCREMENT,
+  `timeID` int(11) DEFAULT NULL,
+  `locationID` int(11) DEFAULT NULL,
+  `incidenceID` int(11) DEFAULT NULL,
+  `county_id` int(11) NOT NULL,
+  `constituency_id` int(11) NOT NULL,
+  `station_id` int(11) NOT NULL,
+  PRIMARY KEY (`factSecuritySummaryID`),
+  UNIQUE KEY `incidenceID_UNIQUE` (`incidenceID`),
+  KEY `fk_fact_security_summary_dim_time1` (`timeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `income`
+--
+
+CREATE TABLE IF NOT EXISTS `income` (
+  `income_id` int(11) NOT NULL AUTO_INCREMENT,
+  `income_average` int(11) NOT NULL,
+  PRIMARY KEY (`income_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `life_expectancy`
+--
+
+CREATE TABLE IF NOT EXISTS `life_expectancy` (
+  `life_id` int(11) NOT NULL AUTO_INCREMENT,
+  `life_expectancy` varchar(250) NOT NULL,
+  PRIMARY KEY (`life_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schools`
+--
+
+CREATE TABLE IF NOT EXISTS `schools` (
+  `school_id` int(11) NOT NULL AUTO_INCREMENT,
+  `school_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`school_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `schools`
+--
+
+INSERT INTO `schools` (`school_id`, `school_name`) VALUES
+(1, 'strathmore high school'),
+(2, 'jahmu high school');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_enrolments`
+--
+
+CREATE TABLE IF NOT EXISTS `school_enrolments` (
+  `se_id` int(11) NOT NULL AUTO_INCREMENT,
+  `se_enrolments` varchar(250) NOT NULL,
+  PRIMARY KEY (`se_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `school_enrolments`
+--
+
+INSERT INTO `school_enrolments` (`se_id`, `se_enrolments`) VALUES
+(1, '20'),
+(2, '50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `security_incidencies`
+--
+
+CREATE TABLE IF NOT EXISTS `security_incidencies` (
+  `security_incidenct_id` int(11) NOT NULL AUTO_INCREMENT,
+  `security_dor` date NOT NULL,
+  `security_reporter_contact` varchar(250) NOT NULL,
+  `security_incidenct_description` text NOT NULL,
+  PRIMARY KEY (`security_incidenct_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `security_incident_types`
+--
+
+CREATE TABLE IF NOT EXISTS `security_incident_types` (
+  `incident_type_id` int(11) NOT NULL AUTO_INCREMENT,
+  `incident_type_name` varchar(250) NOT NULL,
+  PRIMARY KEY (`incident_type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `security_summary`
+--
+
+CREATE TABLE IF NOT EXISTS `security_summary` (
+  `ss_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ss_time_id` int(11) NOT NULL,
+  `ss_location_id` int(11) NOT NULL,
+  `ss_incident_id` int(11) NOT NULL,
+  `ss_county_id` int(11) NOT NULL,
+  `ss_constituency_id` int(11) NOT NULL,
+  `ss_station_id` int(11) NOT NULL,
+  PRIMARY KEY (`ss_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stations`
+--
+
+CREATE TABLE IF NOT EXISTS `stations` (
+  `station_id` int(11) NOT NULL AUTO_INCREMENT,
+  `station_name` varchar(255) NOT NULL,
+  `station_officers` int(11) NOT NULL,
+  PRIMARY KEY (`station_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `time`
+--
+
+CREATE TABLE IF NOT EXISTS `time` (
+  `time_id` int(11) NOT NULL AUTO_INCREMENT,
+  `time_day` int(11) NOT NULL,
+  `time_week` int(11) NOT NULL,
+  `time_month` int(11) NOT NULL,
+  `time_year` int(11) NOT NULL,
+  PRIMARY KEY (`time_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `dim_security_incidences`
+--
+ALTER TABLE `dim_security_incidences`
+  ADD CONSTRAINT `fk_dim_security_incidence_dim_security_incidence_type` FOREIGN KEY (`incidenceType`) REFERENCES `dim_security_incidence_type` (`incidenceName`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `fact_security_summary`
+--
+ALTER TABLE `fact_security_summary`
+  ADD CONSTRAINT `fk_fact_security_summary_dim_security_incidence1` FOREIGN KEY (`incidenceID`) REFERENCES `dim_security_incidences` (`securityIncidenceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_fact_security_summary_dim_time1` FOREIGN KEY (`timeID`) REFERENCES `dim_time` (`timeID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
