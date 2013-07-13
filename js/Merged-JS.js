@@ -235,5 +235,64 @@ $().ready(function(){
 		outline: true,
 		accessKey: "J"
 	});});
+	$('#poverty').css('background','#ff9900');
+	$('.filter').css('border-color','#ff9900');
+	$('.selected').css('background','#ff9900');
+	$('h3').css('color','#ff9900');
 	
+	
+	$('ul li').click(function(){
+		var id=$(this).attr('id');
+		
+		switch(id){
+			case 'poverty':
+			$('ul li').css('background','#2f2f2f');
+			$('#'+id).css('background','#ff9900');
+			$('.filter').css('border-color','#ff9900');
+			$('.selected').css('background','#ff9900');
+			$('h3').css('color','#ff9900');
+			break;
+			case 'crime':
+			$('ul li').css('background','#2f2f2f');
+			$('#'+id).css('background','#fe5b61');
+			$('.filter').css('border-color','#fe5b61');
+	        $('.selected').css('background','#fe5b61');
+	        $('h3').css('color','#fe5b61');
+			break;
+			case 'incidents':
+			$('ul li').css('background','#2f2f2f');
+			$('#'+id).css('background','#80c328');
+			$('.filter').css('border-color','#80c328');
+	        $('.selected').css('background','#80c328');
+	        $('h3').css('color','#80c328');
+			break;
+		}
+		
+	});
+	
+	$('h4').click(function(){
+		var id=$(this).attr('id');
+		$('h4').css('background','#ffffff');
+		$('h4').removeClass('selected');
+		
+		switch(id){
+			case 'map':
+			$('#'+id).addClass('selected',function(){
+			
+		});
+			break;
+			case 'chart':
+			$('#'+id).addClass('selected',function(){
+			
+		});
+			break;
+			case 'list':
+			$('#'+id).addClass('selected',function(){
+			
+		});
+			break;
+		}
+		
+	
+	});
  });
