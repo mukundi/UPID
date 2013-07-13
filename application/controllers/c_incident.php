@@ -38,7 +38,12 @@ class C_Incident extends CI_Controller {
 	}
 
 	public function updateIncident() {
-
+		if ($_POST['incident_type'] != 0 || $_POST['county'] != 0 || $_POST['constituency'] != 0 || $_POST['station'] != 0 || $_POST[''] != "description") {
+			$this -> load -> model('m_incident');
+			$this -> m_incident -> updateIncident();
+		} else {
+			redirect("c_front");
+		}
 	}
 
 	public function getIncident($id) {
@@ -54,7 +59,7 @@ class C_Incident extends CI_Controller {
 		$this -> load -> model('m_stations');
 		$data['stations'] = $this -> m_stations -> getStationNames();
 
-		$sql = "SELECT * FROM security_summary ss, security_incidencies si WHERE ss.ss_id =  '$id' AND si.security_incidenct_id = ss.ss_incident_id";
+		$sql = "SELECT * FROM security_summary ss, security_incidencies si WHERE ss.ss_id ='$id' AND si.security_incident_id = ss.ss_incident_id";
 		$query = $this -> db -> query($sql);
 		$results = $query -> result_array();
 		if ($results) {

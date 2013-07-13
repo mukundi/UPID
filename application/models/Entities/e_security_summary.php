@@ -13,10 +13,12 @@ class E_Security_Summary {
 	 *  @GeneratedValue(strategy="AUTO")
 	 * */
 	private $ss_id;
+	
 	/**
 	 *  @Column(name="ss_time_id", type="string", length=45, nullable=true)
 	 * */
 	private $ss_time_id;
+	
 	/**
 	 *  @Column(name="ss_incident_type", type="integer", length=45, nullable=true)
 	 * */
@@ -78,7 +80,7 @@ class E_Security_Summary {
 	 * Security Summary Location
 	 * */
 	public function getSSLocation() {
-		return $this -> $ss_location_id;
+		return $this -> ss_location_id;
 	}
 
 	public function setSSLocation($ss_location_id) {
@@ -100,7 +102,7 @@ class E_Security_Summary {
 	 * Security Summary County
 	 * */
 	public function getSSCountyID() {
-		return $this -> $ss_county_id;
+		return $this -> ss_county_id;
 	}
 
 	public function setSSCountyID($ss_county_id) {

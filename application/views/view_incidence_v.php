@@ -14,6 +14,7 @@
 		<legend>
 			Incident Details
 		</legend>
+		<input type="hidden" name="summary_id" id="summary_id" />
 		<input type="hidden" name="incident_id" id="incident_id" />
 		<div style="width:50%;">
 			<div id="Category" style="float:left;">
@@ -117,7 +118,8 @@ foreach($results as $result){
 		$("#dor").val("<?php echo $result['security_dor']; ?>");
 		$("#station").val("<?php echo $result['ss_station_id']; ?>");
 		$("#description").val("<?php echo trim($result['security_incident_description']); ?>");	
-		$("#incident_id").val("<?php echo $result['ss_id'];?>");
+		$("#summary_id").val("<?php echo $result['ss_id'];?>");
+		$("#incident_id").val("<?php echo $result['security_incident_id'];?>");
 	});
 
 </script>
