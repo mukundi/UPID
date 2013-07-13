@@ -281,10 +281,16 @@ a {
 	height:100%;
 	background:white;
 	margin-left:0.5%;
+	
 }
 .small{
 	width:31%;
 }
 .large{
 	width:63.8%;
+}
+
+.map{
+	width:100%
+	
 }
