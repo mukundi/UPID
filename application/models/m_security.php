@@ -20,7 +20,7 @@ class M_Security extends MY_Model {
 		}
 
 		if ($county_name) {
-			var_dump($this -> county_name );
+			return($county_name );
 		}
 	}
 
