@@ -3,7 +3,7 @@ namespace models\Entities;
 
 /**
  * @Entity
- * @Table(name="constituency")
+ * @Table(name="constituencies")
  */
 
 class E_Constituencies {
@@ -34,7 +34,7 @@ class E_Constituencies {
 	 *Constituency Name
 	 * */
 	public function getConstituencyName() {
-		return $this -> county_id;
+		return $this -> constituency_id;
 	}
 
 	public function setConstituencyName($constituency_name) {
