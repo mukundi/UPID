@@ -11,6 +11,7 @@ class E_School_Enrolments{
 	/**
 	 * @Id
 	 * @Column(name="se_id", type="integer", length=50, nullable=false)
+	 * * @GeneratedValue(strategy="AUTO")
 	 * */
 	private $se_id;
 

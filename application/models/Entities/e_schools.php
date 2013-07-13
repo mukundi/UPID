@@ -10,6 +10,7 @@ class E_Schools{
 	/**
 	 * @Id
 	 * @Column(name="school_id", type="integer", length=50, nullable=false)
+	 * @GeneratedValue(strategy="AUTO")
 	 * */
 	private $school_id;
 

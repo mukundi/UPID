@@ -25,13 +25,18 @@ class M_Schools extends MY_Model {
 }			
 	function addschool()
 	{
-		echo '<pre>';
-		print_r($_POST);
-		echo '</pre>';
 				//insert facility if new, else update the existing one
 		
 		$this -> theForm = new \models\Entities\E_Schools; //create an object of the model
-		$this -> theForm -> setSecurityIncidentDOR($_POST['dor']);
+		$this -> theForm -> setSchoolName($_POST['school_name']);		
+		$this -> em -> persist($this -> theForm);
+		$this -> em -> flush();
+		$lastid=$this -> theForm->getSchoolID();
+		//echo $lastid; exit;
+		/*$this -> theForm = new \models\Entities\E_Poverty_Summary; //create an object of the model
+		$this -> theForm -> setPsSchoolID($lastid);		
+		$this -> em -> persist($this -> theForm);
+		$this -> em -> flush();*/
 	}
 
 
