@@ -8,11 +8,27 @@ body {
 	background: #2f2f2f;
 }
 h3{
+	display:inline-block;
+	width:40%;
 	font-size:1.2em;
 	margin:0;
-	padding-top:0.5em;
-	padding-left:0.5em;
 	font-weight:normal;
+}
+h4{
+	cursor:pointer;
+	margin-left:0;
+	padding:0.2em;
+	margin:0;
+	display:inline-block
+}
+ .selected {
+	background:#000;
+	color:white;
+}
+h4:hover{
+	cursor:hand;
+	background:#4e4e4e;
+	color:#ffffff;
 }
 header, .content {
 	border-radius: 2px;
@@ -30,13 +46,17 @@ header {
 	height: 40%;
 }
 .content {
-	height:80%;
+	height:90%;
 	margin: auto;
 	width: 95%;
 	margin-top: 2em;
 	padding-bottom: 10%;
 }
 
+.filter{
+	float:right;
+	border-top:2px solid black;
+}
 footer {
 	position: fixed;
 	bottom: 0;
@@ -251,19 +271,20 @@ a {
 .tile-half{
 	display:block;
 	width:100%;
-	height:48%;
-	margin-bottom:0.5%;
+	height:42%;
+	margin-bottom:2%;
 }
 
 .tile{
+	padding:0.5em;
 	display:inline-block;
 	height:100%;
 	background:white;
 	margin-left:0.5%;
 }
 .small{
-	width:32%;
+	width:31%;
 }
 .large{
-	width:64.8%;
+	width:63.8%;
 }

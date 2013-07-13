@@ -1,73 +1,51 @@
-<style>
-.reportCase{
-	height:auto;
-	width:15em;
-	margin-left:1em;
-	padding-top:0.3em;
-	
-	
-}
-.reportCase input[type="text"]{
-display: inline-block; 
-width: 420px; 
-font-family: Arial, Tahoma, sans-serif; 
-margin-bottom: 10px; 
-padding: 5px 9px;
-font-size: 1.2em;
-	
-}
-
-#Category,#email,#date ,#Location,#description,#magnitude{
-	background: transparent;
-   	width: 100%;
-   	padding: 3px;
-	margin:0.6em;
-}
-	
-	
-</style>
-<?php 
-foreach($results as $result){
-	
-}
+<?php
+/**
+echo '<pre>';
+print_r($constituencies);
+echo '</pre>';
+ */
 ?>
-<div class="reportCase"> 
-		<h3>Enter details Below</h3>
-			<div id="Category">
-			<select name="category" style="height: 2.5em">
-				<option selected="selected">Select Category</option>
+<style>
+	.school {
+		height: 80%;
+		margin: 0 auto;
+		padding: 20px;
+		background: #DDD;
+		width: 70%;
+	}
+
+</style>
+<form method="post" action="<?php echo base_url().'c_schools/setschool' ?>">
+		<div class="school"> 
+		<h3>Enter School details</h3>
+			<div id="County">
+			<select name="county" style="height: 2.5em">
+				<option selected="selected">Select County</option>
 				<?php 
-				/*foreach($incident_types as $incident_type){
-					echo "<option value='".$incident_type['incident_type_id']."'>".$incident_type['incident_type_name']."</option>";
-				}*/
+				foreach($counties as $county){
+					echo "<option value='".$county['county_id']."'>".$county['county_name']."</option>";
+				}
 				?>
 			</select>
 			</div>	
-		
-			<div id="email">		
-			<input type="text" name="email" style="height: 2.5em" />
-			</div>	
 			
-			<div id="Location">
-			<select style="height:2.5em">
-				<option selected="selected" >Choose Location</option>
+			<div id="Constituency">
+			<select name="Constituency" style="height: 2.5em">
+				<option selected="selected">Select Constituencies</option>
+				<?php 
+				foreach($constituencies as $constituency){
+					echo "<option value='".$constituency['constituency_id']."'>".$constituency['constituency_name']."</option>";
+				}
+				?>
 			</select>
+			</div>			
+			<div id="school_name">		
+			<input type="text" name="school_name" style="height: 2.5em"  placeholder="school name"/>
 			</div>	
-			<div id="date">
-		<input type="date" name="date" style="height: 2.5em"/>
-		</div>	
-		 
-		 <div id="description">
-			<textarea name="description" style="height: 8em"></textarea>
-		</div>	
-		<div id="magnitude" >
-			<input type="text" name="magnitude" style="height: 2.5em" />
-			</div>	
-				
+
 		 <div id="button">
-			<input type="button" value="Submit" class="awesome blue"/>
-			</div>	
-		
-	
+			<input type="submit" value="Submit" class="awesome blue"/>
+			</div>				
 </div>
+</form>
 

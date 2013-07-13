@@ -1,7 +1,7 @@
 <?php
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
-class M_Poverty extends MY_Model {
+class M_Schools extends MY_Model {
 
 	function __construct() {
 		parent::__construct();
@@ -21,7 +21,22 @@ class M_Poverty extends MY_Model {
 		print_r($this -> schools );
 		echo '</pre>';
 	}
-}
+
+}			
+	function addschool()
+	{
+		echo '<pre>';
+		print_r($_POST);
+		echo '</pre>';
+				//insert facility if new, else update the existing one
+			   $this -> theForm = new \models\Entities\E_Deliveries_No_Log; //create an object of the model
+		      
+			 	
+				//$this -> theForm -> setCreatedAt(new DateTime()); 
+				
+		$theForm -> setSchoolName($_POST['school_name']);
+	}
 
 
 }
+

@@ -5,7 +5,6 @@ namespace models\Entities;
  * @Entity
  * @Table(name="schools")
  */
-
 class E_Schools{
 
 	/**
