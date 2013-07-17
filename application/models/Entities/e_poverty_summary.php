@@ -22,11 +22,11 @@ class E_Poverty_Summary {
 		$this -> ps_id = $ps_id;
 	}
 	/**
-	 *  @Column(name="ps_school_id", type="integer", length=45, nullable=false)
+	 *  @Column(name="ps_school_id", type="integer", length=45, nullable=true)
 	 * */
 	private $ps_school_id;
 	
-	public function getPsSchoolID() {
+	public function getPsSchoolID($ps_school_id) {
 	return $this -> ps_school_id;
 	}
 
@@ -34,7 +34,7 @@ class E_Poverty_Summary {
 		$this -> ps_school_id = $ps_school_id;
 	}
 	/**
-	 *  @Column(name="ps_enrolment_id", type="integer", length=45, nullable=false)
+	 *  @Column(name="ps_enrolment_id", type="integer", length=45, nullable=true)
 	 * */
 	private $ps_enrolment_id;
 	
@@ -46,7 +46,7 @@ class E_Poverty_Summary {
 		$this -> ps_enrolment_id = $ps_enrolment_id;
 	}
 	/**
-	 *  @Column(name="ps_life_id", type="integer", length=45, nullable=false)
+	 *  @Column(name="ps_life_id", type="integer", length=45, nullable=true)
 	 * */
 	private $ps_life_id;
 	
@@ -59,7 +59,7 @@ class E_Poverty_Summary {
 	}
 	
 	/**
-	 *  @Column(name="ps_income_id", type="integer", length=45, nullable=false)
+	 *  @Column(name="ps_income_id", type="integer", length=45, nullable=true)
 	 * */
 	private $ps_income_id;
 	/**

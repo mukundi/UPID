@@ -6,39 +6,39 @@ namespace models\Entities;
  * @Table(name="school_enrolments")
  */
 
-class E_School_Enrolments{
+class E_Life{
 
 	/**
 	 * @Id
 	 * @Column(name="se_id", type="integer", length=50, nullable=false)
 	 * * @GeneratedValue(strategy="AUTO")
 	 * */
-	private $se_id;
+	private $life_id;
 
 	/**
 	 *  @Column(name="se_enrolments", type="string", length=45, nullable=false)
 	 * */
-	private $se_enrolments;
+	private $life_expectancy;
 	
     /**
 	 * School ID
 	 * */
-	public function getEnrolmentID() {
-		return $this ->se_id;
+	public function getLifeID() {
+		return $this ->life_id;
 	}
-	public function setEnrolmentID($se_id) {
-		$this ->se_id = $se_id;
+	public function setLifeID($life_id) {
+		$this ->life_id = $life_id;
 	}
 
     /*
 	 * School Name
 	 * */
-	public function getEnrolments() {
-		return $this ->se_enrolments;
+	public function getLifeExpectancy() {
+		return $this ->life_expectancy;
 	}
 
-	public function setEnrolments($se_enrolments) {
-		 $this -> se_enrolments = $se_enrolments;
+	public function setLifeExpectancy($life_expectancy) {
+		 $this -> life_expectancy = $life_expectancy;
 	}
 
 }

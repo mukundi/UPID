@@ -6,20 +6,17 @@ class M_Schools extends MY_Model {
 	function __construct() {
 		parent::__construct();
 	}
-	function getSchools($county=false) {
+	function getSchools($school=false) {
 	//Get schools
 	try{		
-	$schools = $this -> em -> createQuery('SELECT s.school_name FROM models\Entities\e_schools s');
+	$schools = $this -> em -> createQuery('SELECT s.school_name, s.school_id FROM models\Entities\e_schools s');
 	$this->schools=$schools->getResult();
 	}catch(exception $ex){
 		echo $ex->getMessage();
 	}
 
 	if ($schools) {
-		
-		echo '<pre>';
-		print_r($this -> schools );
-		echo '</pre>';
+	return $this -> schools ;
 	}
 
 }			
@@ -31,12 +28,26 @@ class M_Schools extends MY_Model {
 		$this -> theForm -> setSchoolName($_POST['school_name']);		
 		$this -> em -> persist($this -> theForm);
 		$this -> em -> flush();
-		$lastid=$this -> theForm->getSchoolID();
+		
 		//echo $lastid; exit;
 		/*$this -> theForm = new \models\Entities\E_Poverty_Summary; //create an object of the model
 		$this -> theForm -> setPsSchoolID($lastid);		
 		$this -> em -> persist($this -> theForm);
 		$this -> em -> flush();*/
+	}
+		function addenrolment()
+	{		
+		$this -> theForm = new \models\Entities\E_School_Enrolments; //create an object of the model
+		$this -> theForm -> setEnrolments($_POST['School']);						
+		$this -> em -> persist($this -> theForm);
+		$this -> em -> flush();
+		
+		$lastid=$this -> theForm->getEnrolmentID();	
+		$this -> theForm = new \models\Entities\E_Poverty_Summary; //create an object of the model
+		$this -> theForm -> setPsSchoolID($_POST['School']);	
+		$this -> theForm -> setPsEnrolmentID($lastid);						
+		$this -> em -> persist($this -> theForm);
+		$this -> em -> flush();		
 	}
 
 
