@@ -27,25 +27,51 @@ class M_Schools extends MY_Model {
 		$this -> theForm = new \models\Entities\E_Schools; //create an object of the model
 		$this -> theForm -> setSchoolName($_POST['school_name']);		
 		$this -> em -> persist($this -> theForm);
-		$this -> em -> flush();
+		$this -> em -> flush();		
+		$lastid=$this -> theForm->getSchoolID();
 		
-		//echo $lastid; exit;
-		/*$this -> theForm = new \models\Entities\E_Poverty_Summary; //create an object of the model
-		$this -> theForm -> setPsSchoolID($lastid);		
+		// add to time
+		
+		$this -> theForm = new \models\Entities\E_Time; //create an object of the model
+		$this -> theForm -> setTimeDay(date('d'));
+		$this -> theForm -> setTimeWeek(date('f'));
+		$this -> theForm -> setTimeMonth(date('m'));
+		$this -> theForm -> setTimeYear(date('y'));						
 		$this -> em -> persist($this -> theForm);
-		$this -> em -> flush();*/
+		$this -> em -> flush();
+		$lasttimeid=$this -> theForm->getTimeID();
+		
+		$this -> theForm = new \models\Entities\E_Poverty_Summary; //create an object of the model
+		$this -> theForm -> setPsSchoolID($lastid);	
+		$this -> theForm -> setTimeID($lasttimeid);						
+		$this -> em -> persist($this -> theForm);
+		$this -> em -> flush();	
+		
 	}
-		function addenrolment()
+	
+	function addenrolment()
 	{		
 		$this -> theForm = new \models\Entities\E_School_Enrolments; //create an object of the model
-		$this -> theForm -> setEnrolments($_POST['School']);						
+		$this -> theForm -> setEnrolments($_POST['enrolment']);						
+		$this -> em -> persist($this -> theForm);
+		$this -> em -> flush();		
+		$lastid=$this -> theForm->getEnrolmentID();
+		
+		// add to time
+		
+		$this -> theForm = new \models\Entities\E_Time; //create an object of the model
+		$this -> theForm -> setTimeDay(date('d'));
+		$this -> theForm -> setTimeWeek(date('f'));
+		$this -> theForm -> setTimeMonth(date('m'));
+		$this -> theForm -> setTimeYear(date('y'));						
 		$this -> em -> persist($this -> theForm);
 		$this -> em -> flush();
-		
-		$lastid=$this -> theForm->getEnrolmentID();	
+		$lasttimeid=$this -> theForm->getTimeID();
+			
 		$this -> theForm = new \models\Entities\E_Poverty_Summary; //create an object of the model
 		$this -> theForm -> setPsSchoolID($_POST['School']);	
-		$this -> theForm -> setPsEnrolmentID($lastid);						
+		$this -> theForm -> setPsEnrolmentID($lastid);
+		$this -> theForm -> setTimeID($lasttimeid);								
 		$this -> em -> persist($this -> theForm);
 		$this -> em -> flush();		
 	}

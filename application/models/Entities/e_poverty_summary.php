@@ -73,6 +73,21 @@ class E_Poverty_Summary {
 		$this -> ps_income_id = $ps_income_id;
 	}
 	
+	/**
+	 *  @Column(name="ps_time_id", type="integer", length=45, nullable=true)
+	 * */
+	private $ps_time_id;
+	/**
+	 * Poverty Summary ID
+	 * */
+	public function getTimeID() {
+		return $this -> ps_time_id;
+	}
+
+	public function setTimeID($ps_time_id) {
+		$this -> ps_time_id = $ps_time_id;
+	}
+	
 	
 
 

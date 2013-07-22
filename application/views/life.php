@@ -15,7 +15,7 @@ echo '</pre>';
 	}
 
 </style>
-<form method="post" action="<?php echo base_url().'c_schools/setexpectancy' ?>">
+<form method="post" action="<?php echo base_url().'c_life/setexpectancy' ?>">
 		<div class="school"> 
 		<h3>Enter Life Expectancy Details</h3>
 			<div id="County">

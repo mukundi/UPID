@@ -56,6 +56,9 @@ echo '</pre>';
 				?>
 			</select>
 			</div>	
+			<div>
+				<input type="text" name="enrolment" id="full_name" style="height: 2.5em;width:50%;" required="required" />
+			</div>
 
 		 <div id="button">
 			<input type="submit" value="Submit" class="awesome blue"/>

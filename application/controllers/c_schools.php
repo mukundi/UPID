@@ -28,6 +28,7 @@ class C_Schools extends CI_Controller {
 	{
 		$this -> load -> model('m_schools');
 		$this -> m_schools -> addschool();
+		redirect("c_front");
 	}
 	public function addenrolment()
 	{
@@ -50,7 +51,7 @@ class C_Schools extends CI_Controller {
 	{
 		$this -> load -> model('m_schools');
 		$this -> m_schools -> addenrolment();
-		
+		redirect("c_front");
 	}
 }
 ?>

@@ -21,6 +21,12 @@ class C_Life extends CI_Controller {
 		$data['contentView'] = 'life';	
 		$data['title'] = 'Add Life Expectancy';
 		$this -> load -> view('template',$data);
+	}
+	public function setexpectancy()
+	{
+		$this -> load -> model('m_life');
+		$this -> m_life-> addlife();
+		redirect("c_front");
 	}	
 }
 ?>
