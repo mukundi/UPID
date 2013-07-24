@@ -69,7 +69,7 @@ class E_Poverty_Summary {
 		return $this -> ps_income_id;
 	}
 
-	public function setIncomeID($ps_id) {
+	public function setIncomeID($ps_income_id) {
 		$this -> ps_income_id = $ps_income_id;
 	}
 	
