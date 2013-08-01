@@ -14,15 +14,8 @@ class E_School_Enrolments{
 	 * * @GeneratedValue(strategy="AUTO")
 	 * */
 	private $se_id;
-
-	/**
-	 *  @Column(name="se_enrolments", type="string", length=45, nullable=false)
-	 * */
-	private $se_enrolments;
 	
-    /**
-	 * School ID
-	 * */
+	
 	public function getEnrolmentID() {
 		return $this ->se_id;
 	}
@@ -30,15 +23,30 @@ class E_School_Enrolments{
 		$this ->se_id = $se_id;
 	}
 
-    /*
-	 * School Name
+	/**
+	 *  @Column(name="se_female_enrolments", type="string", length=45, nullable=false)
 	 * */
-	public function getEnrolments() {
-		return $this ->se_enrolments;
+	private $se_female_enrolments;
+
+	public function getFemaleEnrolments() {
+		return $this ->se_female_enrolments;
 	}
 
-	public function setEnrolments($se_enrolments) {
-		 $this -> se_enrolments = $se_enrolments;
+	public function setFemaleEnrolments($se_female_enrolments) {
+		 $this -> se_female_enrolments = $se_female_enrolments;
+	}
+	
+		/**
+	 *  @Column(name="se_male_enrolments", type="string", length=45, nullable=false)
+	 * */
+	private $se_male_enrolments;
+
+	public function getMaleEnrolments() {
+		return $this ->se_male_enrolments;
+	}
+
+	public function setMaleEnrolments($se_male_enrolments) {
+		 $this -> se_male_enrolments = $se_male_enrolments;
 	}
 
 }

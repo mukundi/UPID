@@ -15,9 +15,9 @@ echo '</pre>';
 	}
 
 </style>
-<form method="post" action="<?php echo base_url().'c_schools/setenrolment' ?>">
+<form method="post" action="<?php echo base_url().'c_schools/setexam' ?>">
 		<div class="school"> 
-		<h3>School Progress details</h3>
+		<h3>Enrolment details</h3>
 			<div id="County">
 			<select name="county" style="height: 2.5em">
 				<option selected="selected">Select County</option>
@@ -57,10 +57,17 @@ echo '</pre>';
 			</select>
 			</div>	
 			<div>
-				<input type="text" name="fenrolment" id="full_name" style="height: 2.5em;width:50%;" required="required"  placeholder="Female enrolment"/>
+				Date picker
 			</div>
-						<div>
-				<input type="text" name="menrolment" id="full_name" style="height: 2.5em;width:50%;" required="required"  placeholder="Male enrolment"/>
+			<div>
+			<select name="type" style="height: 2.5em">
+				<option selected="selected">Select Type</option>
+				<option value="kcse">KCSE</option>
+				<option value="kcpe">KCPE</option>
+			</select>
+			</div>
+			<div>
+				<input type="text" name="average" id="avg" style="height: 2.5em;width:50%;" required="required" placeholder=" Exam average" />
 			</div>
 
 		 <div id="button">

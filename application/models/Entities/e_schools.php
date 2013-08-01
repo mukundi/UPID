@@ -13,15 +13,7 @@ class E_Schools{
 	 * @GeneratedValue(strategy="AUTO")
 	 * */
 	private $school_id;
-
-	/**
-	 *  @Column(name="school_name", type="string", length=45, nullable=true)
-	 * */
-	private $school_name;
 	
-    /**
-	 * School ID
-	 * */
 	public function getSchoolID() {
 		return $this ->school_id;
 	}
@@ -30,15 +22,43 @@ class E_Schools{
 		$this ->school_id = $school_id;
 	}
 
-    /*
-	 * School Name
+	/**
+	 *  @Column(name="school_name", type="string", length=45, nullable=true)
 	 * */
+	private $school_name;
+
 	public function getSchoolName() {
 		return $this ->school_name;
 	}
 
 	public function setSchoolName($school_name) {
 		 $this -> school_name = $school_name;
+	}
+	
+		/**
+	 *  @Column(name="school_level", type="string", length=45, nullable=true)
+	 * */
+	private $school_level;
+
+	public function getSchoolLevel() {
+		return $this ->school_level;
+	}
+
+	public function setSchoolLevel($school_level) {
+		 $this -> school_level = $school_level;
+	}
+	
+	/**
+	 *  @Column(name="school_category", type="string", length=45, nullable=true)
+	 * */
+	private $school_category;
+
+	public function getSchoolCategory() {
+		return $this ->school_category;
+	}
+
+	public function setSchoolCategory($school_category) {
+		 $this -> school_category = $school_category;
 	}
 
 }

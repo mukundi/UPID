@@ -43,9 +43,7 @@ class C_Schools extends CI_Controller {
 		$data['schools']=$this -> m_schools -> getschools();
 		$data['contentView'] = 'add_enrolment';			
 		$data['title'] = 'Add Enrolment';
-		$this -> load -> view('template',$data);
-	
-		
+		$this -> load -> view('template',$data);			
 	}
 	public function setenrolment()
 	{
@@ -53,5 +51,31 @@ class C_Schools extends CI_Controller {
 		$this -> m_schools -> addenrolment();
 		redirect("c_front");
 	}
+	
+	// add exam marks
+	public function addexams()
+	{
+		// get counties		
+		$this -> load -> model('m_counties');
+		$data['counties'] = $this -> m_counties -> getCountyNames();
+		//get constituencies		
+		$this -> load -> model('m_constituencies');
+		$data['constituencies'] = $this -> m_constituencies -> getConstituenciesNames();
+		//get schools
+		$this -> load -> model('m_schools');
+		$data['schools']=$this -> m_schools -> getschools();
+		$data['contentView'] = 'add_exam';			
+		$data['title'] = 'Add Exam';
+		$this -> load -> view('template',$data);			
+	}
+	
+	public function setexam()
+	{
+		$this -> load -> model('m_schools');
+		$this -> m_schools -> addexam();
+		redirect("c_front");
+	}
+	
+	
 }
 ?>
