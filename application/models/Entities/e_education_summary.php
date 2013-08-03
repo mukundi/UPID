@@ -56,7 +56,7 @@ class E_Education_Summary {
 		return $this -> es_performance_id;
 	}
 
-	public function setEsLifeID($es_performance_id) {
+	public function setEsPerformanceID($es_performance_id) {
 		$this -> es_performance_id = $es_performance_id;
 	}
 	
@@ -65,11 +65,11 @@ class E_Education_Summary {
 	 * */
 	private $es_dropouts_id;
 
-	public function getDropoutsID() {
+	public function getEsDropoutID() {
 		return $this -> es_dropouts_id;
 	}
 
-	public function setDropoutsID($es_dropouts_id) {
+	public function setEsDropoutID($es_dropouts_id) {
 		$this -> es_dropouts_id = $es_dropouts_id;
 	}
 	

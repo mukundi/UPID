@@ -52,35 +52,68 @@ class M_Schools extends MY_Model {
 	}
 	
 	function addenrolment()
-	{		
-		$this -> theForm = new \models\Entities\E_School_Enrolments; //create an object of the model
-		$this -> theForm -> setFemaleEnrolments($_POST['fenrolment']);	
-		$this -> theForm -> setMaleEnrolments($_POST['menrolment']);						
-		$this -> em -> persist($this -> theForm);
-		$this -> em -> flush();		
-		$lastid=$this -> theForm->getEnrolmentID();
+	{
+		//add to enrolments table	
+		if(((isset($_POST['fenrolment']) && $_POST['fenrolment']<>'') ||(isset($_POST['menrolment']) && $_POST['menrolment']<>'')))	
+		{			
+			$this -> theForm = new \models\Entities\E_School_Enrolments; //create an object of the model
+			$this -> theForm -> setFemaleEnrolments($_POST['fenrolment']);	
+			$this -> theForm -> setMaleEnrolments($_POST['menrolment']);						
+			$this -> em -> persist($this -> theForm);
+			$this -> em -> flush();		
+			$lastid=$this -> theForm->getEnrolmentID();
+									
+			// add to time and get id for enrolments
+			$this -> theForm = new \models\Entities\E_Time; //create an object of the model
+			$this -> theForm -> setTimeDay(date('d'));
+			$this -> theForm -> setTimeWeek(date('f'));
+			$this -> theForm -> setTimeMonth(date('m'));
+			$this -> theForm -> setTimeYear(date('y'));						
+			$this -> em -> persist($this -> theForm);
+			$this -> em -> flush();
+			$lasttimeid=$this -> theForm->getTimeID();
+			
+			// education ids to summarry details		
+			$this -> theForm = new \models\Entities\E_Education_Summary; 				
+			$this -> theForm -> setEsSchoolID($_POST['School']);			
+			$this -> theForm -> setEsEnrolmentID($lastid);					
+			$this -> theForm -> setTimeID($lasttimeid);	
+			$this -> em -> persist($this -> theForm);
+			$this -> em -> flush();	
+					
+		}
 		
-		
-		// add to time
-		
-		$this -> theForm = new \models\Entities\E_Time; //create an object of the model
-		$this -> theForm -> setTimeDay(date('d'));
-		$this -> theForm -> setTimeWeek(date('f'));
-		$this -> theForm -> setTimeMonth(date('m'));
-		$this -> theForm -> setTimeYear(date('y'));						
-		$this -> em -> persist($this -> theForm);
-		$this -> em -> flush();
-		$lasttimeid=$this -> theForm->getTimeID();
-		
-		
-		// education summarry details
-		
-		$this -> theForm = new \models\Entities\E_Education_Summary; 			
-		$this -> theForm -> setEsSchoolID($_POST['School']);			
-		$this -> theForm -> setEsEnrolmentID($lastid);					
-		$this -> theForm -> setTimeID($lasttimeid);								
-		$this -> em -> persist($this -> theForm);
-		$this -> em -> flush();		
+		// add dropouts	
+		if(((isset($_POST['fdropouts']) && $_POST['fdropouts']<>'') ||(isset($_POST['mdropouts']) && $_POST['mdropouts']<>'')))	
+		{
+			$this -> theForm = new \models\Entities\E_School_Dropouts; //create an object of the model			
+			$this -> theForm -> setFemaleDropouts($_POST['fdropouts']);	
+			$this -> theForm -> setMaleDropouts($_POST['mdropouts']);					
+			$this -> em -> persist($this -> theForm);
+			$this -> em -> flush();
+			$lastdropid=$this -> theForm->getDropoutID();
+				
+			// add to time and get id for dropouts
+			$this -> theForm = new \models\Entities\E_Time; //create an object of the model
+			$this -> theForm -> setTimeDay(date('d'));
+			$this -> theForm -> setTimeWeek(date('f'));
+			$this -> theForm -> setTimeMonth(date('m'));
+			$this -> theForm -> setTimeYear(date('y'));						
+			$this -> em -> persist($this -> theForm);
+			$this -> em -> flush();
+			$dtimeid=$this -> theForm->getTimeID();	
+			
+			// education ids to summarry details	
+			$this -> theForm = new \models\Entities\E_Education_Summary; 		
+			$this -> theForm -> setEsSchoolID($_POST['School']);			
+			$this -> theForm -> setEsDropoutID($lastdropid);					
+			$this -> theForm -> setTimeID($dtimeid);
+								
+			$this -> em -> persist($this -> theForm);
+			$this -> em -> flush();				
+		}
+							
+	
 	}
 
 	function addexam()
@@ -112,7 +145,5 @@ class M_Schools extends MY_Model {
 		$this -> em -> flush();
 		*/
 	}
-
-
 }
 

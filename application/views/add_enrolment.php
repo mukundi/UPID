@@ -56,11 +56,18 @@ echo '</pre>';
 				?>
 			</select>
 			</div>	
+			
 			<div>
-				<input type="text" name="fenrolment" id="full_name" style="height: 2.5em;width:50%;" required="required"  placeholder="Female enrolment"/>
+				<input type="text" name="fenrolment" id="full_name" style="height: 2.5em;width:50%;" placeholder="Female enrolment"/>
 			</div>
-						<div>
-				<input type="text" name="menrolment" id="full_name" style="height: 2.5em;width:50%;" required="required"  placeholder="Male enrolment"/>
+			<div>
+				<input type="text" name="menrolment" id="full_name" style="height: 2.5em;width:50%;" placeholder="Male enrolment"/>
+			</div>
+			<div>
+				<input type="text" name="fdropouts" id="full_name" style="height: 2.5em;width:50%;"  placeholder="No of female dropouts"/>
+			</div>
+			<div>
+				<input type="text" name="mdropouts" id="full_name" style="height: 2.5em;width:50%;"  placeholder="No of male dropouts"/>
 			</div>
 
 		 <div id="button">
